@@ -95,7 +95,7 @@
 
         <div class="flex justify-between items-center">
           <p>price</p>
-          <p>{{ cartData.data.totalCartPrice }} EGP</p>
+          <p>{{ cartData?.data?.totalCartPrice }} EGP</p>
         </div>
 
         <div class="flex justify-between items-center">
@@ -117,7 +117,7 @@
 
         <div class="flex justify-between items-center py-2">
           <p>total</p>
-          <p>{{ cartData.data.totalCartPrice - 0 }}</p>
+          <p>{{ cartData?.data?.totalCartPrice }}</p>
         </div>
 
         <button class="btn">proceed to checkout</button>
