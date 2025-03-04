@@ -11,22 +11,25 @@
   </app-navtabs>
 
   <section class="py-5">
-    <!-- Main Title -->
-    <div>
-      <h1 class="text-H1 font-semibold font-display">
-        cart
-        <span class="text-caption text-second-color">
-          {{ cartData.numOfCartItems }} items</span
-        >
-      </h1>
-    </div>
-
     <!-- Cart Data -->
 
     <div class="grid md:grid-cols-[60%_minmax(0,1fr)] gap-4">
-      @if (cartData.data?.products) {
       <div class="flex flex-col gap-2">
-        @for (product of cartData.data.products; track product.product._id) {
+        <!-- Main Title -->
+        <div class="flex justify-between items-center">
+          <h1 class="text-H1 font-semibold font-display">
+            cart
+            <span class="text-caption text-second-color">
+              {{ cartData.numOfCartItems }} items</span
+            >
+          </h1>
+
+          <button class="btn rounded-md px-5 capitalize" (click)="clearCart()">
+            clear cart
+          </button>
+        </div>
+        @if (cartData.data?.products) { @for (product of cartData.data.products;
+        track product.product._id) {
         <div
           class="bg-white flex items-center gap-5 rounded-md shadow py-2 px-3 relative"
         >
@@ -80,9 +83,12 @@
             </span>
           </button>
         </div>
+        }}@if(cartData.numOfCartItems===0 || !cartData.data?.products ) {
+        <div class="bg-white shadow h-[100px] flex justify-center items-center">
+          <h2 class="font-medium">your cart is empty</h2>
+        </div>
         }
       </div>
-      }
 
       <!-- Payment -->
 
@@ -120,7 +126,9 @@
           <p>{{ cartData?.data?.totalCartPrice }}</p>
         </div>
 
-        <button class="btn">proceed to checkout</button>
+        <button routerLink="/checkout" class="btn rounded-md">
+          proceed to checkout
+        </button>
       </div>
     </div>
   </section>
