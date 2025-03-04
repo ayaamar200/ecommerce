@@ -30,7 +30,7 @@ export class AuthService {
     );
   }
 
-  forgetPassword(data: object): Observable<any> {
+  verifyEmail(data: object): Observable<any> {
     return this.httpClient.post(
       `${environment.baseUrl}/api/v1/auth/forgotPasswords`,
       data
@@ -44,16 +44,16 @@ export class AuthService {
     );
   }
 
-  updateLoggedUserPassword(data: object): Observable<any> {
+  resetPassword(data: object): Observable<any> {
     return this.httpClient.put(
-      `${environment.baseUrl}/api/v1/users/changeMyPassword`,
+      `${environment.baseUrl}/api/v1/auth/resetPassword`,
       data
     );
   }
 
-  resetPassword(data: object): Observable<any> {
+  updateLoggedUserPassword(data: object): Observable<any> {
     return this.httpClient.put(
-      `${environment.baseUrl}/api/v1/auth/resetPassword`,
+      `${environment.baseUrl}/api/v1/users/changeMyPassword`,
       data
     );
   }

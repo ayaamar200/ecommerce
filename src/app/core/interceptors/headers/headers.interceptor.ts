@@ -2,6 +2,7 @@ import { HttpInterceptorFn } from '@angular/common/http';
 
 export const headersInterceptor: HttpInterceptorFn = (req, next) => {
   // Request Logic
+
   if (localStorage.getItem('userToken')) {
     if (
       req.url.includes('cart') ||

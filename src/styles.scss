@@ -13,7 +13,7 @@
 @import 'ngx-toastr/toastr';
 
 .btn{
-    @apply  bg-second-color text-white text-sm border border-white py-2  block  hover:bg-main-color transition-colors duration-500 disabled:bg-footer
+    @apply  bg-second-color capitalize text-white text-sm border border-white py-2  block  hover:bg-main-color transition-colors duration-500 disabled:bg-footer
 }
 
 h1,h2{
