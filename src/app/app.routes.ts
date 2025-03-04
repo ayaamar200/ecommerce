@@ -1,4 +1,3 @@
-import { ForgetpasswordComponent } from './pages/forgetpassword/forgetpassword.component';
 import { Routes } from '@angular/router';
 
 // Import layouts (eager loading)
@@ -62,7 +61,7 @@ export const routes: Routes = [
           import('./pages/wishlist/wishlist.component').then(
             (m) => m.WishlistComponent
           ),
-        title: 'Cart',
+        title: 'Wishlist',
       },
       {
         path: 'products',
