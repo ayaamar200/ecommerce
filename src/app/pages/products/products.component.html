@@ -1,0 +1,93 @@
+<section class="capitalize">
+  <app-navtabs>
+    <li>
+      <a
+        class="block py-2 px-2 text-second-color font-semibold"
+        aria-current="page"
+      >
+        products
+      </a>
+    </li>
+  </app-navtabs>
+
+  <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 py-10">
+    @for (product of products; track product.id) {
+    <div class="card item hover:scale-105 transition-all duration-500">
+      <div class="card-img">
+        <div [routerLink]="['/details', product.id]">
+          <img
+            [src]="product.imageCover"
+            class="w-full h-[250px] object-contain"
+            [alt]="product.title.split(' ', 2).join(' ')"
+          />
+        </div>
+
+        <div class="layer flex justify-center items-center py-2 gap-2">
+          <button
+            (click)="addToWishlist(product._id)"
+            role="button"
+            title="Add To Wishlist"
+            class="text-gray-400 px-2 py-1 bg-white border rounded-md hover:bg-main-color hover:text-white"
+          >
+            <i class="fa-regular fa-heart"></i>
+          </button>
+
+          <button
+            title="Quick View"
+            role="button"
+            [routerLink]="['/details', product.id]"
+            class="text-gray-400 px-2 py-1 bg-white border rounded-md hover:bg-main-color hover:text-white"
+          >
+            <i class="fa-regular fa-eye"></i>
+          </button>
+
+          <button
+            title="Add To Compare"
+            role="button"
+            class="text-gray-400 px-2 py-1 bg-white border rounded-md hover:bg-main-color hover:text-white"
+          >
+            <i class="fa-solid fa-repeat"></i>
+          </button>
+
+          <button
+            (click)="addToCart(product.id)"
+            title="Add To Cart"
+            role="button"
+            class="text-gray-400 px-2 py-1 bg-white border rounded-md hover:bg-main-color hover:text-white"
+          >
+            <i class="fa-solid fa-cart-shopping"></i>
+          </button>
+        </div>
+      </div>
+      <div class="card-body p-4 border-t">
+        <h3 class="text-main-color text-sm font-semibold">
+          {{ product.category.name }}
+        </h3>
+        <h4 class="pt-1 text-caption font-medium">
+          {{ product.title.split(" ", 2).join(" ") }}
+        </h4>
+        <div class="flex justify-between items-center py-2">
+          <span class="text-caption font-medium">
+            {{ product.price }} EGP
+          </span>
+          <div class="flex items-center justify-center">
+            <span class="flex items-center justify-center">
+              <i class="fas fa-star text-yellow-300"></i>
+            </span>
+
+            <span class="text-caption">
+              {{ product.ratingsAverage }}
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    }
+  </div>
+
+  <!-- <button class="btn rounded-full py-2 px-4 blok mx-auto mt-4 capitalize">
+    see all
+    <span class="ms-1"><i class="fa-solid fa-chevron-right"></i></span>
+  </button> -->
+</section>

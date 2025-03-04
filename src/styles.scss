@@ -1,0 +1,60 @@
+/* You can add global styles to this file, and also import other style files */
+
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@import 'ngx-owl-carousel-o/lib/styles/scss/owl.carousel';
+@import 'ngx-owl-carousel-o/lib/styles/scss/owl.theme.default';
+
+// regular style toast
+@import 'ngx-toastr/toastr';
+
+.btn{
+    @apply  bg-second-color text-white text-sm border border-white py-2  block  hover:bg-main-color transition-colors duration-500 disabled:bg-footer
+}
+
+h1,h2{
+    font-family: "Playfair Display", serif;
+    letter-spacing: 1px;
+
+}
+
+.card{
+    @apply bg-white border rounded-md overflow-hidden relative shadow
+
+}
+
+
+.item{
+
+.card-body , button{
+    transition: all 0.5s ;
+}
+
+    button{
+        transform: translateY(100%);
+   
+        opacity: 0;
+    }
+
+    &:hover{
+        button{
+            transform: translateY(0);
+            opacity: 1;
+            
+        }
+
+       
+
+        
+    }
+}
+
+
+
+
+

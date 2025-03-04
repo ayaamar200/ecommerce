@@ -1,0 +1,81 @@
+<section class="capitalize">
+  <app-navtabs>
+    <li>
+      <a
+        class="block py-2 px-2 text-second-color font-semibold"
+        aria-current="page"
+      >
+        wishlist
+      </a>
+    </li>
+  </app-navtabs>
+
+  <section class="py-5">
+    <!-- Main Title -->
+    <div>
+      <h1 class="text-H1 font-semibold font-display">
+        wish List
+        <span class="text-caption text-second-color">
+          {{ wishlist.count }} items</span
+        >
+      </h1>
+    </div>
+
+    <!-- wish List Data -->
+
+    @if (wishlist?.data) {
+    <div class="grid md:grid-cols-3 gap-3">
+      @for (product of wishlist.data; track product._id) {
+
+      <div
+        class="bg-white flex items-center gap-5 rounded-md shadow py-2 px-3 relative"
+      >
+        <!-- image -->
+        <div class="flex items-center justify-center">
+          <img
+            [src]="product.imageCover"
+            class="w-full h-[150px] object-contain rounded-md"
+            [alt]="product.title.split(' ', 2).join(' ')"
+          />
+        </div>
+
+        <!-- Product Details -->
+        <div class="py-3">
+          <h3 class="text-sm font-medium">
+            {{ product.title.split(" ", 2).join(" ") }}
+          </h3>
+
+          <p class="text-2nd-color text-caption">{{ product.description }}</p>
+
+          <p class="text-sm font-semibold text-main-color py-2">
+            price: {{ product.price }} EGP
+          </p>
+
+          <button
+            (click)="addToCart(product._id)"
+            title="Add To Cart"
+            role="button"
+            class="mt-4 px-8 py-1 bg-white border border-second-color text-second-color rounded-md hover:bg-main-color hover:text-white transition-all duration-300"
+          >
+            Add To Cart
+            <i class="fa-solid fa-cart-shopping"></i>
+          </button>
+        </div>
+
+        <button
+          (click)="removeWishListItem(product._id)"
+          role="button"
+          title="Remove"
+          class="text-second-color absolute top-4 end-4 hover:text-main-color transition-all duration-300"
+        >
+          <span>
+            <i class="fa-solid fa-xmark"></i>
+          </span>
+        </button>
+      </div>
+
+      }
+    </div>
+    }
+  </section>
+</section>

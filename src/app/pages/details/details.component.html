@@ -1,0 +1,151 @@
+<section>
+  <app-navtabs>
+    <li>
+      <div class="flex justify-center items-center">
+        <a
+          class="block py-2 px-2 hover:text-main-color hover:underline hover:font-semibold cursor-pointer transition-all duration-500"
+        >
+          products
+        </a>
+
+        <span class="text-caption flex jc items-center"
+          ><i class="fa-solid fa-chevron-right"></i
+        ></span>
+      </div>
+    </li>
+
+    <li>
+      <a
+        class="block py-2 px-2 text-second-color font-semibold"
+        aria-current="page"
+      >
+        product details
+      </a>
+    </li>
+  </app-navtabs>
+  @if (productDetails) {
+  <section class="py-10 px-20">
+    <div class="details-body grid md:grid-cols-2 gap-6">
+      <!-- Product Images -->
+      <div class="flex flex-col gap-5">
+        <!-- Image Cover -->
+        <div>
+          <img
+            class="w-full h-[300px] object-contain rounded-lg border shadow"
+            [src]="productDetails.imageCover"
+            [alt]="productDetails.title"
+          />
+        </div>
+
+        <!-- Images -->
+        <div class="flex justify-center items-center gap-4">
+          @for (img of productDetails.images; track $index) {
+          <div
+            class="hover:shadow hover:shadow-second-color hover:scale-105 transition-all duration-500"
+          >
+            <img
+              class="h-[100px] w-full object-contain rounded-lg"
+              [src]="img"
+              [alt]="productDetails.title"
+            />
+          </div>
+          }
+        </div>
+      </div>
+
+      <!-- Products Details -->
+      <div
+        class="flex flex-col justify-center p-10 border shadow rounded-lg bg-white"
+      >
+        <h1 class="text-H2 font-bold py-2 text-main-color">
+          {{ productDetails.title }}
+        </h1>
+
+        <!-- Ratings -->
+        <div class="text-2nd-color py-2">
+          <span class="text-yellow-500">
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-regular fa-star-half-stroke"></i>
+            <i class="fa-regular fa-star"></i>
+          </span>
+          <span class="px-2 text-color">
+            {{ productDetails.ratingsAverage }}
+          </span>
+          <span>
+            |
+            <a
+              class="py-2 px-2 hover:text-main-color hover:underline hover:font-semibold cursor-pointer transition-all duration-500"
+            >
+              {{ productDetails.ratingsQuantity }} <span>reviews</span>
+            </a>
+          </span>
+        </div>
+
+        <!-- Product Price -->
+        <div class="flex justify-between items-center py-3 font-semibold">
+          <p>{{ productDetails.price }} EGP</p>
+          <p class="text-sm">
+            {{ productDetails.quantity }}
+            <span class="px-1 text-2nd-color text-caption">Items</span>
+          </p>
+        </div>
+
+        <!-- Product Description -->
+
+        <p class="text-sm text-2nd-color py-3">
+          {{ productDetails.description }}.
+        </p>
+
+        <!-- More Info -->
+        <ul class="py-3">
+          <li>
+            <span class="text-second-color font-medium text-sm">Category:</span>
+            <span class="text-caption text-2nd-color px-2">{{
+              productDetails.category.name
+            }}</span>
+          </li>
+          <li>
+            <span class="text-second-color font-medium text-sm"
+              >SubCategory:</span
+            >
+            <span class="text-caption text-2nd-color px-2">{{
+              productDetails.subcategory[0].name
+            }}</span>
+          </li>
+
+          <li>
+            <span class="text-second-color font-medium text-sm">Brand:</span>
+            <span class="text-caption text-2nd-color px-2">{{
+              productDetails.brand.name
+            }}</span>
+          </li>
+        </ul>
+
+        <!-- Quantity -->
+        <div class="flex justify-between items-center py-3">
+          <button
+            (click)="addToCart(productDetails._id)"
+            title="Add To Cart"
+            role="button"
+            class="px-2 py-1 bg-white border border-second-color text-second-color rounded-md hover:bg-main-color hover:text-white transition-all duration-300"
+          >
+            Add To Cart
+            <i class="fa-solid fa-cart-shopping"></i>
+          </button>
+
+          <button
+            (click)="addToWishlist(productDetails._id)"
+            role="button"
+            title="Add To Wishlist"
+            class="px-2 py-1 bg-white border border-second-color text-second-color rounded-md hover:bg-main-color hover:text-white"
+          >
+            <i class="fa-regular fa-heart"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+  }
+</section>

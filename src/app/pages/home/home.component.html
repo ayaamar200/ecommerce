@@ -1,0 +1,276 @@
+<main>
+  <!-- *********************** Home Section ***********************-->
+  <section class="home">
+    <div>
+      <div class="px-20">
+        <h1 class="text-H1 text-white capitalize font-medium">
+          elevate your home with stylish furniture
+        </h1>
+
+        <p class="text-white text-caption py-5 w-[400px] mb-10">
+          Explore a range of high-quality, affordable furniture designed to
+          transform any room. Discover the perfect blend of style, comfort, and
+          functionality for your space.
+        </p>
+
+        <button class="btn rounded-md py-2 px-3">Shop Now</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- *********************** New Collection Section ***********************-->
+
+  <section class="collection py-5 capitalize">
+    <div class="main-title text-center py-5">
+      <h2 class="text-sm text-main-color font-medium">new collection</h2>
+      <p class="text-H1 font-bold">check the new collection</p>
+    </div>
+
+    <!-- images -->
+    <div class="grid md:grid-cols-2 gap-5">
+      <div
+        class="collection-1 flex items-center justify-center text-white rounded-lg"
+      >
+        <div class="py-20">
+          <h3 class="text-H2 font-medium">shoes</h3>
+          <p class="text-caption">up to 50% off</p>
+        </div>
+      </div>
+
+      <div class="flex flex-col gap-2">
+        <div
+          class="collection-2 flex items-center justify-center text-white rounded-lg"
+        >
+          <div class="py-20">
+            <h3 class="text-H2 font-medium">bags</h3>
+            <p class="text-caption">up to 50% off</p>
+          </div>
+        </div>
+        <div
+          class="collection-3 flex items-center justify-center text-white rounded-lg"
+        >
+          <div class="py-20">
+            <h3 class="text-H2 font-medium">accessories</h3>
+            <p class="text-caption">up to 50% off</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- *********************** Top Products Section ***********************-->
+
+  <section class="capitalize">
+    <div class="main-title text-center py-5">
+      <h2 class="text-sm text-main-color font-medium">top products</h2>
+      <p class="text-H1 font-bold">top picks for you!"</p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
+      @for (product of products; track product.id) {
+      <div class="card item hover:scale-105 transition-all duration-500">
+        <div class="card-img">
+          <div [routerLink]="['/details', product.id]">
+            <img
+              [src]="product.imageCover"
+              class="w-full h-[250px] object-contain"
+              [alt]="product.title.split(' ', 2).join(' ')"
+            />
+          </div>
+
+          <div class="layer flex justify-center items-center py-2 gap-2">
+            <button
+              (click)="addToWishlist(product.id)"
+              role="button"
+              title="Add To Wishlist"
+              class="text-2nd-color px-2 py-1 bg-white border rounded-md hover:bg-main-color hover:text-white"
+            >
+              <i class="fa-regular fa-heart"></i>
+            </button>
+
+            <button
+              title="Quick View"
+              role="button"
+              [routerLink]="['/details', product.id]"
+              class="text-2nd-color px-2 py-1 bg-white border rounded-md hover:bg-main-color hover:text-white"
+            >
+              <i class="fa-regular fa-eye"></i>
+            </button>
+
+            <button
+              title="Add To Compare"
+              role="button"
+              class="text-2nd-color px-2 py-1 bg-white border rounded-md hover:bg-main-color hover:text-white"
+            >
+              <i class="fa-solid fa-repeat"></i>
+            </button>
+
+            <button
+              (click)="addToCart(product.id)"
+              title="Add To Cart"
+              role="button"
+              class="text-2nd-color px-2 py-1 bg-white border rounded-md hover:bg-main-color hover:text-white"
+            >
+              <i class="fa-solid fa-cart-shopping"></i>
+            </button>
+          </div>
+        </div>
+        <div class="card-body p-4 border-t">
+          <h3 class="text-main-color text-sm font-semibold">
+            {{ product.category.name }}
+          </h3>
+          <h4 class="pt-1 text-caption font-medium">
+            {{ product.title.split(" ", 2).join(" ") }}
+          </h4>
+          <div class="flex justify-between items-center py-2">
+            <span class="text-caption font-medium">
+              {{ product.price }} EGP
+            </span>
+            <div class="flex items-center justify-center">
+              <span class="flex items-center justify-center">
+                <i class="fas fa-star text-yellow-300"></i>
+              </span>
+
+              <span class="text-caption">
+                {{ product.ratingsAverage }}
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      }
+    </div>
+
+    <button
+      routerLink="/products"
+      class="btn rounded-full py-2 px-4 blok mx-auto mt-4 capitalize"
+    >
+      see all
+      <span class="ms-1"><i class="fa-solid fa-chevron-right"></i></span>
+    </button>
+  </section>
+
+  <!-- *********************** Services Section ***********************-->
+
+  <section class="capitalize">
+    <div class="main-title text-center py-5">
+      <h2 class="text-sm text-main-color font-medium">services</h2>
+      <p class="text-H1 font-bold">
+        benefits when using <br />
+        our services
+      </p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-5 pb-5">
+      <div class="card">
+        <div class="card-body p-6">
+          <span
+            class="size-8 rounded-full bg-sec-color text-main-color flex justify-center items-center"
+          >
+            <i class="fa-solid fa-lightbulb"></i>
+          </span>
+          <h3 class="font-semibold py-1">inspiration</h3>
+          <p class="text-caption text-2nd-color">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur
+            consectetur deleniti eveniet numquam consequuntur, qui voluptates
+            nobis sed explicabo error?
+          </p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-body p-6">
+          <span
+            class="size-8 rounded-full bg-sec-color text-main-color flex justify-center items-center"
+          >
+            <i class="fa-solid fa-headphones"></i>
+          </span>
+          <h3 class="font-semibold py-1">24/7 customer services</h3>
+          <p class="text-caption text-2nd-color">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur
+            consectetur deleniti eveniet numquam consequuntur, qui voluptates
+            nobis sed explicabo error?
+          </p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-body p-6">
+          <span
+            class="size-8 rounded-full bg-sec-color text-main-color flex justify-center items-center"
+          >
+            <i class="fa-solid fa-truck-fast"></i>
+          </span>
+          <h3 class="font-semibold py-1">express shipping</h3>
+          <p class="text-caption text-2nd-color">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur
+            consectetur deleniti eveniet numquam consequuntur, qui voluptates
+            nobis sed explicabo error?
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!--************ Main Slider Section ************ -->
+<!-- <section>
+  <div class="grid md:grid-cols-[minmax(0,1fr)_30%]">
+    <div>
+      <owl-carousel-o [options]="mainSliderOptions">
+        <ng-template carouselSlide>
+          <img
+            src="./images/img1.avif"
+            class="w-full h-[300px]"
+            alt="Home Photos"
+          />
+        </ng-template>
+        <ng-template carouselSlide>
+          <img
+            src="./images/img2.avif"
+            class="w-full h-[300px]"
+            alt="Home Photos"
+          />
+        </ng-template>
+        <ng-template carouselSlide>
+          <img
+            src="./images/img3.avif"
+            class="w-full h-[300px]"
+            alt="Home Photos"
+          />
+        </ng-template>
+        <ng-template carouselSlide>
+          <img
+            src="./images/img4.avif"
+            class="w-full h-[300px]"
+            alt="Home Photos"
+          />
+        </ng-template>
+        <ng-template carouselSlide>
+          <img
+            src="./images/img5.avif"
+            class="w-full h-[300px]"
+            alt="Home Photos"
+          />
+        </ng-template>
+        <ng-template carouselSlide>
+          <img
+            src="./images/img6.avif"
+            class="w-full h-[300px]"
+            alt="Home Photos"
+          />
+        </ng-template>
+      </owl-carousel-o>
+    </div>
+
+    <div>
+      <img src="./images/grocery-banner.png" class="w-full h-[150px]" alt="" />
+      <img
+        src="./images/grocery-banner-2.jpeg"
+        class="w-full h-[150px]"
+        alt=""
+      />
+    </div>
+  </div>
+</section> -->
