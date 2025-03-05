@@ -57,6 +57,14 @@ export const routes: Routes = [
         title: 'Cart',
       },
       {
+        path: 'allorders',
+        loadComponent: () =>
+          import('./pages/allorders/allorders.component').then(
+            (m) => m.AllordersComponent
+          ),
+        title: 'All Orders',
+      },
+      {
         path: 'wishlist',
         loadComponent: () =>
           import('./pages/wishlist/wishlist.component').then(
@@ -97,7 +105,7 @@ export const routes: Routes = [
         title: 'Brands',
       },
       {
-        path: 'checkout',
+        path: 'checkout/:cartId',
         loadComponent: () =>
           import('./pages/checkout/checkout.component').then(
             (m) => m.CheckoutComponent

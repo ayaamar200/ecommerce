@@ -126,7 +126,10 @@
           <p>{{ cartData?.data?.totalCartPrice }}</p>
         </div>
 
-        <button routerLink="/checkout" class="btn rounded-md">
+        <button
+          [routerLink]="['/checkout', cartData.cartId]"
+          class="btn rounded-md"
+        >
           proceed to checkout
         </button>
       </div>

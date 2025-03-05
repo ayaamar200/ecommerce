@@ -1,1 +1,195 @@
-<p>checkout works!</p>
+<section>
+  <app-navtabs>
+    <li>
+      <div class="flex justify-center items-center">
+        <a
+          class="block py-2 px-2 hover:text-main-color hover:underline hover:font-semibold cursor-pointer transition-all duration-500"
+        >
+          cart
+        </a>
+
+        <span class="text-caption flex jc items-center"
+          ><i class="fa-solid fa-chevron-right"></i
+        ></span>
+      </div>
+    </li>
+
+    <li>
+      <a
+        class="block py-2 px-2 text-second-color font-semibold"
+        aria-current="page"
+      >
+        checkout
+      </a>
+    </li>
+  </app-navtabs>
+
+  <div
+    class="w-[70%] my-10 mx-auto bg-sec-color shadow-md shadow-second-color border-1 rounded-md"
+  >
+    <form
+      [formGroup]="checkOutForm"
+      (ngSubmit)="onlinePayment()"
+      class="w-full p-4"
+    >
+      <div>
+        <label for="details" class="block font-medium mb-2">Details</label>
+        <div class="relative">
+          <textarea
+            formControlName="details"
+            id="details"
+            class="border border-second-color text-2nd-color text-sm rounded-lg focus:ring-main-color focus:border-main-color block w-full ps-10 p-2.5 mb-3"
+            placeholder="Your Address or any Comment"
+          ></textarea>
+        </div>
+
+        @let detailsControl = checkOutForm.get('details'); @if(
+        detailsControl?.errors && detailsControl?.touched) {
+        <div
+          class="flex p-3 mb-2 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
+          role="alert"
+        >
+          <svg
+            class="shrink-0 inline w-4 h-4 me-3 mt-[2px]"
+            aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="currentColor"
+            viewBox="0 0 20 20"
+          >
+            <path
+              d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"
+            />
+          </svg>
+          <span class="sr-only">Danger</span>
+          <div>
+            <ul class="text-caption font-medium">
+              @if ( detailsControl?.getError("required")) {
+              <li>details is required.</li>
+
+              }
+            </ul>
+          </div>
+        </div>
+        }
+      </div>
+
+      <div>
+        <label for="phone" class="block font-medium mb-2">Phone</label>
+        <div class="relative">
+          <div
+            class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none"
+          >
+            <span class="text-main-color">
+              <i class="fa-solid fa-mobile-screen"></i>
+            </span>
+          </div>
+          <input
+            formControlName="phone"
+            type="tel"
+            id="phone"
+            class="border border-second-color text-2nd-color text-sm rounded-lg focus:ring-main-color focus:border-main-color block w-full ps-10 p-2.5 mb-3"
+            placeholder="01550776648"
+          />
+        </div>
+
+        @let phoneControl = checkOutForm.get('phone'); @if( phoneControl?.errors
+        && phoneControl?.touched) {
+        <div
+          class="flex p-3 mb-2 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
+          role="alert"
+        >
+          <svg
+            class="shrink-0 inline w-4 h-4 me-3 mt-[2px]"
+            aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="currentColor"
+            viewBox="0 0 20 20"
+          >
+            <path
+              d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"
+            />
+          </svg>
+          <span class="sr-only">Danger</span>
+          <div>
+            <ul class="text-caption font-medium">
+              @if ( phoneControl?.getError("required")) {
+              <li>phone is required.</li>
+
+              } @else if ( phoneControl?.getError("pattern")) {
+              <li>Please enter a valid phone number.</li>
+              }
+            </ul>
+          </div>
+        </div>
+        }
+      </div>
+
+      <div>
+        <label for="city" class="block font-medium mb-2">City</label>
+        <div class="relative">
+          <div
+            class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none"
+          >
+            <span class="text-main-color">
+              <i class="fa-solid fa-city"></i>
+            </span>
+          </div>
+          <input
+            formControlName="city"
+            type="text"
+            id="city"
+            class="border border-second-color text-2nd-color text-sm rounded-lg focus:ring-main-color focus:border-main-color block w-full ps-10 p-2.5 mb-3"
+            placeholder="Enter Your City"
+          />
+        </div>
+
+        @let cityControl = checkOutForm.get('city'); @if( cityControl?.errors &&
+        cityControl?.touched) {
+        <div
+          class="flex p-3 mb-2 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
+          role="alert"
+        >
+          <svg
+            class="shrink-0 inline w-4 h-4 me-3 mt-[2px]"
+            aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="currentColor"
+            viewBox="0 0 20 20"
+          >
+            <path
+              d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"
+            />
+          </svg>
+          <span class="sr-only">Danger</span>
+          <div>
+            <ul class="text-caption font-medium">
+              @if ( cityControl?.getError("required")) {
+              <li>city is required.</li>
+
+              }
+            </ul>
+          </div>
+        </div>
+        }
+      </div>
+
+      <div class="flex justify-between">
+        <button
+          [disabled]="checkOutForm.invalid"
+          type="submit"
+          class="btn px-4 mt-6 rounded-md"
+        >
+          online payment
+        </button>
+
+        <button
+          [disabled]="checkOutForm.invalid"
+          type="button"
+          class="btn px-4 mt-6 rounded-md"
+        >
+          cash payment
+        </button>
+      </div>
+    </form>
+  </div>
+</section>

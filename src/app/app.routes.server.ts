@@ -6,6 +6,10 @@ export const serverRoutes: ServerRoute[] = [
     renderMode: RenderMode.Client,
   },
   {
+    path: 'checkout/:cartId',
+    renderMode: RenderMode.Client,
+  },
+  {
     path: 'wishlist',
     renderMode: RenderMode.Client,
   },
