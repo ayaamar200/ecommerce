@@ -21,7 +21,6 @@ export class CategoriesComponent implements OnInit {
 
   ngOnInit() {
     this.getCategoriesData();
-    this.getCategoryDetails('6439d61c0049ad0b52b90051');
   }
   // Fetching the data from the services
 

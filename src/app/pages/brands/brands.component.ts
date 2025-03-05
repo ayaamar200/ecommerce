@@ -46,6 +46,5 @@ export class BrandsComponent {
 
   ngOnInit() {
     this.getBrandsData();
-    this.getBrandsDetails('6439d61c0049ad0b52b90051');
   }
 }
